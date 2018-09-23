@@ -55,7 +55,7 @@ Local<Object> FrameBuffer::NewInstance(Local<Value> arg, Local<Value> arg2) {
   const unsigned argc = 2;
   Local<Value> argv[argc] = { arg, arg2 };
   Local<Function> cons = Nan::New<Function>(constructor);
-  Local<Object> instance = Nan::NewInstance(cons, argc, argv).ToLocalChecked();
+  Local<Object> instance = Nan::NewInstance(cons, argc, argv).FromMaybe(v8::Local<v8::Object>());
 
   return scope.Escape(instance);
 
